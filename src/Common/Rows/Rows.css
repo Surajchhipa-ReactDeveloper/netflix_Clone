@@ -6,6 +6,8 @@
   overflow: auto;
   padding: 1rem 2rem;
   cursor: pointer;
+  width: auto;
+  height: auto;
 }
 
 ::-webkit-scrollbar {
@@ -13,7 +15,7 @@
   overflow: scroll;
 }
 .row__poster {
-  width: 20rem;
+  width: 30rem;
   object-fit: contain;
   object-position: top center;
   padding: 0.5rem;
@@ -23,8 +25,8 @@
   transform: scale(1.08);
 }
 .row__posterLarge {
-  width: 20rem;
-  object-fit: contain;
+  width: 24rem;
+  object-fit: cover;
   object-position: top center;
   transition: transform 0.3s ease-in-out;
 }
@@ -33,6 +35,7 @@
 }
 .Rows_Main_Title {
   color: white;
-  font-size: 2.2rem;
-  line-height: 3rem;
+  font-size: 2.8rem;
+  line-height: 3.2rem;
+  margin: 1rem 2rem;
 }

@@ -32,9 +32,8 @@ const Hero2 = () => {
   useEffect(() => {
     const fetchData = async () => {
       const maxRetries = 3;
-      let retryCount = 0;
 
-      while (retryCount < maxRetries) {
+      for (let retryCount = 0; retryCount < maxRetries; retryCount++) {
         try {
           const startingValue = 255000;
           const maxValue = 100000;
@@ -58,7 +57,11 @@ const Hero2 = () => {
           setMovie(data);
           return;
         } catch (error) {
-          retryCount++;
+          if (retryCount === maxRetries - 1) {
+            console.error("Error fetching movie data:", error);
+          }
+          // Delay before retrying
+          await new Promise((resolve) => setTimeout(resolve, 1000));
         }
       }
     };
@@ -77,9 +80,26 @@ const Hero2 = () => {
                   movie.backdrop_path ? movie.backdrop_path : movie.poster_path
                 }`}
                 alt={
-                  movie.backdrop_path
+                  movie.poster_path
                     ? "movie.backdrop_path"
                     : "movie.poster_path"
+                }
+                className="Hero_Movies"
+              />
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="Hero_Movie_poster_For_Mobile">
+            {movie ? (
+              <img
+                src={`https://image.tmdb.org/t/p/original${
+                  movie.poster_path ? movie.poster_path : movie.poster_path
+                }`}
+                alt={
+                  movie.poster_path
+                    ? "movie.poster_path"
+                    : "movie.backdrop_path"
                 }
                 className="Hero_Movies"
               />
@@ -103,7 +123,7 @@ const Hero2 = () => {
               </div>
             </div>
             <div className="Movie_OverView MovieText">
-              {limitOverviewLength(movie.overview, 50)}
+              {limitOverviewLength(movie.overview, 40)}
             </div>
             {movie &&
             movie.production_companies &&

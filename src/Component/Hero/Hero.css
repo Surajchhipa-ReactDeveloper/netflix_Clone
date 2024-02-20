@@ -57,6 +57,9 @@
     rgba(0, 0, 0, 0) 100%
   );
 }
+.Hero_Movie_poster_For_Mobile {
+  display: none;
+}
 
 @media only screen and (max-width: 1000px) {
   .Movie_OverView {
@@ -65,23 +68,42 @@
   .Movie_Title {
     font-size: 8rem;
     line-height: 10rem;
-
   }
 }
 @media only screen and (max-width: 769px) {
   .Movie_Title {
     font-size: 7.5rem;
   }
+  .Movie_OverView {
+    width: 75%;
+  }
+  .Hero_Movies,
+  .Hero_background_Container {
+    height: 80svh;
+    object-position: center top;
+    object-fit: fill;
+  }
+  .Hero_Movie_poster {
+    display: none !important;
+  }
+  .Hero_Movie_poster_For_Mobile {
+    display: block;
+  }
 }
 @media only screen and (max-width: 500px) {
   .Movie_Title {
-    font-size: 6rem;
-    line-height: 9rem;
+    font-size: 5rem;
+    line-height: 7rem;
   }
   .MovieText {
     font-size: 2.2rem;
   }
   .Movie_OverView {
-    width: 70%;
+    width: 85%;
+  }
+  .Hero_Movies,
+  .Hero_background_Container {
+    height: 80svh;
+    object-position: center center;
   }
 }

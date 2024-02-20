@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Navbar.css";
 import axios from "axios";
 import { Images } from "../../Constant/ImagePath";
@@ -16,9 +16,25 @@ const YourComponent = () => {
   const [openBar, setOpenBar] = useState(!false);
   const dispatch = useDispatch();
   const dispatch2 = useDispatch();
+  const movieDataContainerRef = useRef(null);
   const HandleSearchMovie = (event) => {
     setSearch(event.target.value);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        movieDataContainerRef.current &&
+        !movieDataContainerRef.current.contains(event.target)
+      ) {
+        setOpenBar(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
   useEffect(() => {
     const handleSearchMovie = async () => {
       try {
@@ -39,9 +55,9 @@ const YourComponent = () => {
 
   const HandleSelectMovie = (id) => {
     console.log("Selected movie ID:", id.id);
-    setSearch(id.title)
-    dispatch2(SelectedMovieIdLoad(id));
     setOpenBar(!true);
+    setSearch(id.title);
+    dispatch2(SelectedMovieIdLoad(id));
   };
   return (
     <>
@@ -60,7 +76,7 @@ const YourComponent = () => {
             />
           </div>
           {openBar && SearchMovieData && SearchMovieData.length > 0 && (
-            <div className="Movie_Data_Container">
+            <div className="Movie_Data_Container" ref={movieDataContainerRef}>
               {SearchMovieData.map((film, id) => (
                 <h1
                   className="Search_Movie_Name"
