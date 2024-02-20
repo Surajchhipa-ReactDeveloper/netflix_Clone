@@ -7,16 +7,11 @@ import { useSelector } from "react-redux";
 const Rows = ({ title, TypeMovie, isLargeRow, moviesData }) => {
   const [movies, setMovies] = useState([]);
   const [trailer, setTrailer] = useState([]);
-  // const SearchMovieData = useSelector((state) => state.movieSearch.searchMovie);
-
-  // Now 'SearchMovieData' contains the value of the 'searchMovie' field from the Redux state
-  // console.log(SearchMovieData);
 
   const handleClick = (movie) => {
     console.log("THE KEY OF MOVIES IS >>>", movie.id, movie);
-    // console.log(moviesData);
+    setTrailer(movie);
   };
-  // console.log(TypeMovie);
 
   return (
     <>

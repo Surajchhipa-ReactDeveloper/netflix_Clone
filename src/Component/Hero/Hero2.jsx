@@ -91,13 +91,13 @@ const Hero2 = () => {
             <div className="Movie_Title">{movie.title}</div>
             <div className="Movies_Content">
               <div className="Release_Date MovieText">
-                {formatReleaseDate(movie.release_date)}
+                {formatReleaseDate(movie.release_date)} |
               </div>
-              |
+
               <div className="Timing MovieText">
-                {formatRuntime(movie.runtime)}
+                {formatRuntime(movie.runtime)} |
               </div>
-              |
+
               <div className="Type_of_Movie MovieText">
                 {movie.genres.map((genre) => genre.name).join(", ")}
               </div>

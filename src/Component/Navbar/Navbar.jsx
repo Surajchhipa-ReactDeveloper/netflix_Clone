@@ -39,7 +39,9 @@ const YourComponent = () => {
 
   const HandleSelectMovie = (id) => {
     console.log("Selected movie ID:", id.id);
+    setSearch(id.title)
     dispatch2(SelectedMovieIdLoad(id));
+    setOpenBar(!true);
   };
   return (
     <>
