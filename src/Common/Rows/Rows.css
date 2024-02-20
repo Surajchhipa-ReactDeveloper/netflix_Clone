@@ -1,0 +1,38 @@
+.Rows_Main_Container {
+  padding: 0.5rem;
+}
+.Row__posters {
+  display: flex;
+  overflow: auto;
+  padding: 1rem 2rem;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  display: flex;
+  overflow: scroll;
+}
+.row__poster {
+  width: 20rem;
+  object-fit: contain;
+  object-position: top center;
+  padding: 0.5rem;
+  transition: transform 0.3s ease-in-out;
+}
+.row__poster:hover {
+  transform: scale(1.08);
+}
+.row__posterLarge {
+  width: 20rem;
+  object-fit: contain;
+  object-position: top center;
+  transition: transform 0.3s ease-in-out;
+}
+.row__posterLarge:hover {
+  transform: scale(1.06);
+}
+.Rows_Main_Title {
+  color: white;
+  font-size: 2.2rem;
+  line-height: 3rem;
+}
