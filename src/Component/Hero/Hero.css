@@ -5,6 +5,27 @@
   display: flex;
   position: relative;
 }
+.Hero_Container_Loading {
+  width: 100%;
+  height: 100svh;
+  animation: Loading 1s infinite ease-in-out;
+}
+@keyframes Loading {
+  50% {
+    background-color: rgba(120, 120, 120, 0.416);
+  }
+  100% {
+    background-color: rgba(255, 255, 255, 0.718);
+  }
+}
+.BlankData {
+  width: 100%;
+  height: 90svh;
+}
+
+.Hero_Item_Loading {
+  background-color: #181616;
+}
 .Hero_Movies {
   /* border: 2px solid green; */
   width: 100%;

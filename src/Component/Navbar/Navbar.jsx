@@ -46,7 +46,7 @@ const YourComponent = () => {
         setOpenBar(true);
         dispatch(updateSearchMovie(response.data.results));
       } catch (error) {
-        console.error("Error fetching movie data:", error);
+        // console.error("Error fetching movie data:", error);
         setOpenBar(false);
       }
     };
@@ -54,7 +54,7 @@ const YourComponent = () => {
   }, [search]);
 
   const HandleSelectMovie = (id) => {
-    console.log("Selected movie ID:", id.id);
+    // console.log("Selected movie ID:", id.id);
     setOpenBar(!true);
     setSearch(id.title);
     dispatch2(SelectedMovieIdLoad(id));

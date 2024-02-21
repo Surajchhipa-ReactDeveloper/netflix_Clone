@@ -42,13 +42,13 @@ const Hero2 = () => {
             startingValue;
           const movieId = Random;
 
-          const Url = `${BASE_URL}/movie/${
+          const Url = `${BASE_URL}movie/${
             movie == null ? movieId : selectedMovie.id
           }?api_key=${API_KEY}`;
 
           const response = await fetch(Url);
 
-          console.log(Url);
+          // console.log(Url);
           if (!response.ok) {
             throw new Error("Network response was not ok");
           }
@@ -58,7 +58,7 @@ const Hero2 = () => {
           return;
         } catch (error) {
           if (retryCount === maxRetries - 1) {
-            console.error("Error fetching movie data:", error);
+            // console.error("Error fetching movie data:", error);
           }
           // Delay before retrying
           await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -80,11 +80,14 @@ const Hero2 = () => {
                   movie.backdrop_path ? movie.backdrop_path : movie.poster_path
                 }`}
                 alt={
-                  movie.poster_path
+                  movie.backdrop_path
                     ? "movie.backdrop_path"
                     : "movie.poster_path"
                 }
-                className="Hero_Movies"
+                className={` ${
+                  movie.backdrop_path ? "Hero_Movies" : "BlankData"
+                } `}
+                // className="Hero_Movies"
               />
             ) : (
               ""
@@ -138,7 +141,26 @@ const Hero2 = () => {
           <div className="Hero_background_Container"></div>
         </div>
       ) : (
-        <p>Loading...</p>
+        <div className="Hero_Container_Loading">
+          <div className="Hero_Item_Loading">
+            <div className="Movie_Title"></div>
+            <div className="Movies_Content">
+              <div className="Release_Date MovieText"></div>
+
+              <div className="Timing MovieText"></div>
+
+              <div className="Type_of_Movie MovieText"></div>
+            </div>
+            <div className="Movie_OverView MovieText"></div>
+            {movie &&
+            movie.production_companies &&
+            movie.production_companies.length > 0 ? (
+              <div className="Pro_Name MovieText"></div>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
       )}
     </>
   );

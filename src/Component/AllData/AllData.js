@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Rows from "../../Common/Rows/Rows";
-import Request from "../../Common/APIPoints/Points";
 import axios from "axios";
-import Hero from "../Hero/Hero";
 import { useSelector } from "react-redux";
 
 const AllData = () => {
   // All type category State
-
   const [trending, setTrending] = useState([]);
   const [original, setOriginal] = useState([]);
   const [topRated, setTopRated] = useState([]);
@@ -60,7 +57,7 @@ const AllData = () => {
         });
         return genreIds.filter(Boolean);
       } catch (error) {
-        console.error("Error fetching genre IDs:", error);
+        // console.error("Error fetching genre IDs:", error);
         return [];
       }
     };
@@ -102,18 +99,6 @@ const AllData = () => {
   return (
     <>
       <div className="All_Data_container">
-        <div className="Block" style={{ display: "none" }}>
-          <Hero trending={trending} />
-        </div>
-
-        {/* {SearchMovieData ? (
-          <Rows
-            title={`${!SearchMovieData ? "Search Movies" : ""}`}
-            TypeMovie={SearchMovieData}
-          />
-        ) : (
-          ""
-        )} */}
         <Rows title="NETFLIX ORIGINALS" TypeMovie={trending} isLargeRow />
         <Rows title="Trending Now" TypeMovie={original} />
         <Rows title="Top Rated" TypeMovie={topRated} />

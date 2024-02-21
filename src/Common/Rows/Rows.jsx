@@ -3,14 +3,15 @@ import "./Rows.css";
 import React, { useEffect, useState } from "react";
 import { BASE_URL_IMG } from "../../apiConfig";
 import { useSelector } from "react-redux";
+import Trailer from "../../Component/Trailer/Trailer";
 
 const Rows = ({ title, TypeMovie, isLargeRow, moviesData }) => {
   const [movies, setMovies] = useState([]);
-  const [trailer, setTrailer] = useState([]);
+  const [trailer, setTrailer] = useState(null);
 
   const handleClick = (movie) => {
-    console.log("THE KEY OF MOVIES IS >>>", movie.id, movie);
-    setTrailer(movie);
+    // console.log("THE KEY OF MOVIES IS >>>", movie.id, movie);
+    setTrailer(movie.id);
   };
 
   return (
@@ -30,6 +31,7 @@ const Rows = ({ title, TypeMovie, isLargeRow, moviesData }) => {
             />
           ))}
         </div>
+        <Trailer trailer={trailer} />
       </div>
     </>
   );

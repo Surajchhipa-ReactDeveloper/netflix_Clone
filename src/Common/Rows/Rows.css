@@ -1,6 +1,12 @@
 .Rows_Main_Container {
   padding: 0.5rem;
 }
+.loadingClass {
+  width: 30rem;
+  height: 20vh;
+  background-color: rgb(53, 53, 53);
+  animation: LoadingRows 1s infinite ease-in-out;
+}
 .Row__posters {
   display: flex;
   overflow: auto;

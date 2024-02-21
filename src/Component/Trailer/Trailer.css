@@ -1,0 +1,9 @@
+.trailer-container {
+  height: 2svh; /* Set your preferred height in vh */
+  width: 100%;
+  overflow: hidden; /* Prevents vertical scrollbar in case the video is taller than the viewport */
+}
+.TrailerClass {
+  width: 100vw;
+  height: 100vh;
+}
