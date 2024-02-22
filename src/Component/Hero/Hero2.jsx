@@ -11,6 +11,7 @@ const Hero2 = () => {
     (state) => state.SelectMovie.selectedMovieId
   );
   // console.log(selectedMovie);
+
   const [movie, setMovie] = useState(null);
 
   function limitOverviewLength(overview, limit) {

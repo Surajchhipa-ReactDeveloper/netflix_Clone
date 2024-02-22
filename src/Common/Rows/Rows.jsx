@@ -2,18 +2,23 @@ import axios from "axios";
 import "./Rows.css";
 import React, { useEffect, useState } from "react";
 import { BASE_URL_IMG } from "../../apiConfig";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Trailer from "../../Component/Trailer/Trailer";
 
 const Rows = ({ title, TypeMovie, isLargeRow, moviesData }) => {
   const [movies, setMovies] = useState([]);
   const [trailer, setTrailer] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [showModel, setShowModel] = useState(true); //Model Open and Close
 
   const handleClick = (movie) => {
     // console.log("THE KEY OF MOVIES IS >>>", movie.id, movie);
     setTrailer(movie.id);
+    setOpen(!false);
   };
-
+  const closeTrailerModal = () => {
+    setShowModel(false);
+  };
   return (
     <>
       <div className="Rows_Main_Container">
@@ -31,7 +36,16 @@ const Rows = ({ title, TypeMovie, isLargeRow, moviesData }) => {
             />
           ))}
         </div>
-        <Trailer trailer={trailer} />
+
+        {open ? (
+          <Trailer
+            trailer={trailer}
+            visible={showModel}
+            closeModel={closeTrailerModal}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </>
   );
